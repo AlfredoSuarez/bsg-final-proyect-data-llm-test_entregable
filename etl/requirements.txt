@@ -1,0 +1,7 @@
+# Dependencias para AWS Glue 4.0 ETL Job
+# Se pasan al Job via --additional-python-modules
+# Glue 4.0 ya incluye: boto3, pandas, numpy, pyarrow.
+
+PyPDF2==3.0.1
+python-docx==1.1.2
+beautifulsoup4==4.12.3

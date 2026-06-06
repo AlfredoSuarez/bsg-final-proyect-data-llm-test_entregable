@@ -1,0 +1,51 @@
+=== docker build chunking/ — 2026-05-31T05:31:59Z ===
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.70kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for public.ecr.aws/lambda/python:3.11-arm64
+#2 DONE 1.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 230B 0.0s done
+#3 DONE 0.0s
+
+#4 [builder 1/4] FROM public.ecr.aws/lambda/python:3.11-arm64@sha256:742b84420415c0547eef7705c3e34682e68c5c16071cf1109fff6ca17aa3d24e
+#4 resolve public.ecr.aws/lambda/python:3.11-arm64@sha256:742b84420415c0547eef7705c3e34682e68c5c16071cf1109fff6ca17aa3d24e 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 77B 0.0s done
+#5 DONE 0.0s
+
+#6 [stage-1 2/4] COPY --from=builder /opt/python /var/task
+#6 CACHED
+
+#7 [builder 2/4] COPY requirements.txt /tmp/requirements.txt
+#7 CACHED
+
+#8 [builder 3/4] RUN pip install --no-cache-dir         --target /opt/python         -r /tmp/requirements.txt  && test -d /opt/python  && echo "deps instaladas:" && ls /opt/python | head -10
+#8 CACHED
+
+#9 [builder 4/4] RUN find /opt/python -type d -name "__pycache__" -prune -exec rm -rf {} + ;     find /opt/python -type d -name "tests"       -prune -exec rm -rf {} + ;     find /opt/python -type d -name "test"        -prune -exec rm -rf {} + ;     true
+#9 CACHED
+
+#10 [stage-1 3/4] COPY lambda_function.py /var/task/
+#10 CACHED
+
+#11 [stage-1 4/4] RUN python -c "import boto3, pyarrow, tiktoken, langchain_text_splitters; print('OK')"
+#11 CACHED
+
+#12 exporting to image
+#12 exporting layers done
+#12 exporting manifest sha256:cfb208bf77ddbca87ee71d12c4cede5a6ca47c0466c38e96570a0c9ff3bdc422 done
+#12 exporting config sha256:fde0915a2addca14aa25d40cab2ceecacbb2d86d78282795db5903abb5dafbd2 done
+#12 exporting attestation manifest sha256:4a48ac38f4418fa29e417f7e64c636aebaa93b26f1004145866f8d729b23acc6 0.0s done
+#12 exporting manifest list sha256:4e98df2c49064c7f1b3fcf5a4eb249ca88c9497a0a452df838d59ead6a4a1eed 0.0s done
+#12 naming to docker.io/library/bsg-rag-chunking-test:local
+#12 naming to docker.io/library/bsg-rag-chunking-test:local done
+#12 DONE 0.1s
+[exit code: 0]

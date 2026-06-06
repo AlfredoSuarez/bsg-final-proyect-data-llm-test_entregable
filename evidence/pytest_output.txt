@@ -1,0 +1,103 @@
+[1m============================= test session starts ==============================[0m
+platform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0 -- /mnt/c/Users/Rog/OneDrive/BCG Institute/Arquitectura Escalable/Proyecto_Final/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /mnt/c/Users/Rog/OneDrive/BCG Institute/Arquitectura Escalable/Proyecto_Final/tests
+configfile: pytest.ini
+plugins: anyio-4.13.0, langsmith-0.8.5
+[1mcollecting ... [0mcollected 93 items
+
+tests/test_chunking.py::TestQualityGateReglaMaestra::test_chunk_corto_pero_financiero_NO_se_descarta [32mPASSED[0m[32m [  1%][0m
+tests/test_chunking.py::TestQualityGateReglaMaestra::test_chunk_financial_declarado_con_flags_va_a_warning [32mPASSED[0m[32m [  2%][0m
+tests/test_chunking.py::TestQualityGateReglaMaestra::test_chunk_no_financiero_corto_si_se_descarta [32mPASSED[0m[32m [  3%][0m
+tests/test_chunking.py::TestQualityGateReglaMaestra::test_marcador_carrier_billing_promueve_a_financial [32mPASSED[0m[32m [  4%][0m
+tests/test_chunking.py::TestQualityGateReglaMaestra::test_marcador_clausula_promueve_a_financial [32mPASSED[0m[32m [  5%][0m
+tests/test_chunking.py::TestQualityGateReglas::test_texto_largo_diverso_pasa [32mPASSED[0m[32m [  6%][0m
+tests/test_chunking.py::TestQualityGateReglas::test_texto_repetitivo_se_descarta_por_ttr_bajo [32mPASSED[0m[32m [  7%][0m
+tests/test_chunking.py::TestQualityGateReglas::test_boilerplate_pagina_se_descarta [32mPASSED[0m[32m [  8%][0m
+tests/test_chunking.py::TestQualityGateReglas::test_metricas_se_reportan_correctamente [32mPASSED[0m[32m [  9%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[APR 24% sobre saldo-True] [32mPASSED[0m[32m [ 10%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[La tasa anual del 24% se aplica-True] [32mPASSED[0m[32m [ 11%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[El CAT regulatorio vigente es 35%-True] [32mPASSED[0m[32m [ 12%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[Servicio Carrier Billing disponible-True] [32mPASSED[0m[32m [ 13%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[Comisi\xf3n de apertura del 3%-True] [32mPASSED[0m[32m [ 15%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[Esta cl\xe1usula no aplica-True] [32mPASSED[0m[32m [ 16%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[Cargos por mora aplicables-True] [32mPASSED[0m[32m [ 17%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[Penalizaci\xf3n del 1.5% mensual-True] [32mPASSED[0m[32m [ 18%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[Scoring crediticio favorable-True] [32mPASSED[0m[32m [ 19%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[Aplicamos un 24% de descuento-True] [32mPASSED[0m[32m [ 20%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[Texto totalmente neutro sobre productos-False] [32mPASSED[0m[32m [ 21%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[-False] [32mPASSED[0m[32m [ 22%][0m
+tests/test_chunking.py::TestHasFinancialMarker::test_deteccion[Hola mundo bonito-False] [32mPASSED[0m[32m [ 23%][0m
+tests/test_chunking.py::TestTypeTokenRatio::test_ttr_alto_para_texto_diverso [32mPASSED[0m[32m [ 24%][0m
+tests/test_chunking.py::TestTypeTokenRatio::test_ttr_bajo_para_texto_repetitivo [32mPASSED[0m[32m [ 25%][0m
+tests/test_chunking.py::TestTypeTokenRatio::test_ttr_vacio [32mPASSED[0m[32m        [ 26%][0m
+tests/test_chunking.py::TestComputeChunkId::test_idempotente [32mPASSED[0m[32m      [ 27%][0m
+tests/test_chunking.py::TestComputeChunkId::test_distinto_por_content [32mPASSED[0m[32m [ 29%][0m
+tests/test_chunking.py::TestComputeChunkId::test_distinto_por_chunk_index [32mPASSED[0m[32m [ 30%][0m
+tests/test_chunking.py::TestComputeChunkId::test_distinto_por_document_id [32mPASSED[0m[32m [ 31%][0m
+tests/test_chunking.py::TestComputeChunkId::test_distinto_por_page [32mPASSED[0m[32m [ 32%][0m
+tests/test_chunking.py::TestExtractSectionHint::test_primera_linea_no_vacia [32mPASSED[0m[32m [ 33%][0m
+tests/test_chunking.py::TestExtractSectionHint::test_saltos_iniciales [32mPASSED[0m[32m [ 34%][0m
+tests/test_chunking.py::TestExtractSectionHint::test_truncamiento_a_max_len [32mPASSED[0m[32m [ 35%][0m
+tests/test_chunking.py::TestExtractSectionHint::test_texto_vacio [32mPASSED[0m[32m  [ 36%][0m
+tests/test_chunking.py::TestExtractSectionHint::test_solo_whitespace [32mPASSED[0m[32m [ 37%][0m
+tests/test_chunking.py::TestSplitter::test_split_devuelve_lista_de_chunks [32mPASSED[0m[32m [ 38%][0m
+tests/test_chunking.py::TestSplitter::test_split_respeta_chunk_size_max_aproximadamente [32mPASSED[0m[32m [ 39%][0m
+tests/test_chunking.py::TestSplitter::test_split_texto_corto [32mPASSED[0m[32m      [ 40%][0m
+tests/test_chunking.py::TestCountTokens::test_count_no_vacio [32mPASSED[0m[32m      [ 41%][0m
+tests/test_chunking.py::TestCountTokens::test_count_vacio [32mPASSED[0m[32m         [ 43%][0m
+tests/test_chunking.py::TestCountTokens::test_count_creciente [32mPASSED[0m[32m     [ 44%][0m
+tests/test_etl_parser.py::TestPDFParsing::test_pdf_extrae_texto_de_contrato_3_paginas [32mPASSED[0m[32m [ 45%][0m
+tests/test_etl_parser.py::TestPDFParsing::test_pdf_manejo_de_corrupto [32mPASSED[0m[32m [ 46%][0m
+tests/test_etl_parser.py::TestDOCXParsing::test_docx_extrae_texto_completo [32mPASSED[0m[32m [ 47%][0m
+tests/test_etl_parser.py::TestHTMLParsing::test_html_extrae_texto_y_remueve_script_style [32mPASSED[0m[32m [ 48%][0m
+tests/test_etl_parser.py::TestNormalizeText::test_normaliza_nfc [32mPASSED[0m[32m   [ 49%][0m
+tests/test_etl_parser.py::TestNormalizeText::test_remueve_caracteres_no_imprimibles [32mPASSED[0m[32m [ 50%][0m
+tests/test_etl_parser.py::TestNormalizeText::test_colapsa_whitespace_excesivo [32mPASSED[0m[32m [ 51%][0m
+tests/test_etl_parser.py::TestNormalizeText::test_strip_y_newlines_excesivos [32mPASSED[0m[32m [ 52%][0m
+tests/test_etl_parser.py::TestNormalizeText::test_texto_vacio [32mPASSED[0m[32m     [ 53%][0m
+tests/test_etl_parser.py::TestDedupHeadersFooters::test_remueve_lineas_repetidas_en_3_paginas [32mPASSED[0m[32m [ 54%][0m
+tests/test_etl_parser.py::TestDedupHeadersFooters::test_no_aplica_con_menos_de_3_paginas [32mPASSED[0m[32m [ 55%][0m
+tests/test_etl_parser.py::TestDedupHeadersFooters::test_remueve_patron_boilerplate_pagina_numero [32mPASSED[0m[32m [ 56%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[contratos/carrier_billing_v2.3.pdf-contract] [32mPASSED[0m[32m [ 58%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[contracts/sla_servicios.pdf-sla] [32mPASSED[0m[32m [ 59%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[politicas/scoring_credito.pdf-policy_credit] [32mPASSED[0m[32m [ 60%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[dossiers/icp_ana_digital.docx-dossier_icp] [32mPASSED[0m[32m [ 61%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[manuales/manual_negocios_v3.pdf-manual_tech] [32mPASSED[0m[32m [ 62%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[aliado_digital_guia.pdf-manual_tech] [32mPASSED[0m[32m [ 63%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[catalogo/paquete_arranque_social.pdf-catalog] [32mPASSED[0m[32m [ 64%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[casos/exito_marca_local.pdf-case_study] [32mPASSED[0m[32m [ 65%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[faqs/preguntas_carrier_billing.html-faq] [32mPASSED[0m[32m [ 66%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[procesos/onboarding_pyme.pdf-process_op] [32mPASSED[0m[32m [ 67%][0m
+tests/test_etl_parser.py::TestInferDocType::test_inferencia_doc_type[documento_sin_categoria.pdf-unknown] [32mPASSED[0m[32m [ 68%][0m
+tests/test_etl_parser.py::TestInferVertical::test_inferencia_vertical[verticals/moda_etica/dossier.pdf-moda_etica] [32mPASSED[0m[32m [ 69%][0m
+tests/test_etl_parser.py::TestInferVertical::test_inferencia_vertical[contratos/fashion_brand_x.pdf-moda_etica] [32mPASSED[0m[32m [ 70%][0m
+tests/test_etl_parser.py::TestInferVertical::test_inferencia_vertical[verticals/skincare/caso_glow.pdf-skincare_d2c] [32mPASSED[0m[32m [ 72%][0m
+tests/test_etl_parser.py::TestInferVertical::test_inferencia_vertical[docs/cosmetica_natural.pdf-skincare_d2c] [32mPASSED[0m[32m [ 73%][0m
+tests/test_etl_parser.py::TestInferVertical::test_inferencia_vertical[joyeria/dise\xf1o_autor.pdf-joyeria_diseno] [32mPASSED[0m[32m [ 74%][0m
+tests/test_etl_parser.py::TestInferVertical::test_inferencia_vertical[jewelry/dossier.pdf-joyeria_diseno] [32mPASSED[0m[32m [ 75%][0m
+tests/test_etl_parser.py::TestInferVertical::test_inferencia_vertical[mascotas/pet_premium.pdf-mascotas_premium] [32mPASSED[0m[32m [ 76%][0m
+tests/test_etl_parser.py::TestInferVertical::test_inferencia_vertical[documento_generico.pdf-general] [32mPASSED[0m[32m [ 77%][0m
+tests/test_etl_parser.py::TestInferCriticality::test_contract_es_financial [32mPASSED[0m[32m [ 78%][0m
+tests/test_etl_parser.py::TestInferCriticality::test_policy_credit_es_financial [32mPASSED[0m[32m [ 79%][0m
+tests/test_etl_parser.py::TestInferCriticality::test_sla_es_legal [32mPASSED[0m[32m [ 80%][0m
+tests/test_etl_parser.py::TestInferCriticality::test_manual_es_operational [32mPASSED[0m[32m [ 81%][0m
+tests/test_etl_parser.py::TestInferCriticality::test_case_study_es_informational [32mPASSED[0m[32m [ 82%][0m
+tests/test_etl_parser.py::TestInferCriticality::test_unknown_default_informational [32mPASSED[0m[32m [ 83%][0m
+tests/test_etl_parser.py::TestComputeVersionHash::test_hash_idempotente [32mPASSED[0m[32m [ 84%][0m
+tests/test_etl_parser.py::TestComputeVersionHash::test_hash_distinto_para_contenido_distinto [32mPASSED[0m[32m [ 86%][0m
+tests/test_etl_parser.py::TestComputeDocumentId::test_document_id_estable [32mPASSED[0m[32m [ 87%][0m
+tests/test_etl_parser.py::TestComputeDocumentId::test_document_id_cambia_con_contenido [32mPASSED[0m[32m [ 88%][0m
+tests/test_etl_parser.py::TestComputeDocumentId::test_document_id_cambia_con_key [32mPASSED[0m[32m [ 89%][0m
+tests/test_indexer.py::TestFormatVectorLiteral::test_vector_simple [32mPASSED[0m[32m [ 90%][0m
+tests/test_indexer.py::TestFormatVectorLiteral::test_vector_con_floats_decimales [32mPASSED[0m[32m [ 91%][0m
+tests/test_indexer.py::TestFormatVectorLiteral::test_vector_1024_dim_simulado [32mPASSED[0m[32m [ 92%][0m
+tests/test_indexer.py::TestComputeDatasetHash::test_hash_deterministico [32mPASSED[0m[32m [ 93%][0m
+tests/test_indexer.py::TestComputeDatasetHash::test_hash_orden_independiente [32mPASSED[0m[32m [ 94%][0m
+tests/test_indexer.py::TestComputeDatasetHash::test_hash_distinto_para_set_distinto [32mPASSED[0m[32m [ 95%][0m
+tests/test_indexer.py::TestComputeDatasetHash::test_hash_es_sha256_hex [32mPASSED[0m[32m [ 96%][0m
+tests/test_indexer.py::TestComputeDatasetHash::test_hash_set_vacio [32mPASSED[0m[32m [ 97%][0m
+tests/test_indexer.py::TestMetadataParsing::test_metadata_como_string_json_valido [32mPASSED[0m[32m [ 98%][0m
+tests/test_indexer.py::TestMetadataParsing::test_metadata_como_string_json_invalido_no_crashea [32mPASSED[0m[32m [100%][0m
+
+[32m============================= [32m[1m93 passed[0m[32m in 20.31s[0m[32m ==============================[0m

@@ -1,0 +1,69 @@
+=== docker build indexer/ — 2026-05-31T05:32:02Z ===
+
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.57kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim-bookworm
+#2 ...
+
+#3 [auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim-bookworm
+#2 DONE 2.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 186B 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 179B 0.1s done
+#5 DONE 0.1s
+
+#6 [builder 1/5] FROM docker.io/library/python:3.11-slim-bookworm@sha256:8dca233de9f3d9bb410665f00a4da6dd06f331083137e0e98ccf227236fcc438
+#6 resolve docker.io/library/python:3.11-slim-bookworm@sha256:8dca233de9f3d9bb410665f00a4da6dd06f331083137e0e98ccf227236fcc438 0.0s done
+#6 DONE 0.0s
+
+#7 [stage-1 6/7] COPY --chown=indexer:indexer loader.py /app/loader.py
+#7 CACHED
+
+#8 [builder 3/5] RUN python -m venv /opt/venv
+#8 CACHED
+
+#9 [builder 4/5] COPY requirements.txt /tmp/requirements.txt
+#9 CACHED
+
+#10 [stage-1 3/7] COPY --from=builder /opt/venv /opt/venv
+#10 CACHED
+
+#11 [stage-1 4/7] RUN useradd --create-home --shell /bin/bash --uid 1001 indexer &&     mkdir -p /app && chown indexer:indexer /app
+#11 CACHED
+
+#12 [stage-1 2/7] RUN apt-get update && apt-get install -y --no-install-recommends         ca-certificates         libpq5     && rm -rf /var/lib/apt/lists/*
+#12 CACHED
+
+#13 [builder 5/5] RUN pip install --upgrade pip &&     pip install -r /tmp/requirements.txt
+#13 CACHED
+
+#14 [stage-1 5/7] WORKDIR /app
+#14 CACHED
+
+#15 [builder 2/5] RUN apt-get update && apt-get install -y --no-install-recommends         build-essential         libpq-dev     && rm -rf /var/lib/apt/lists/*
+#15 CACHED
+
+#16 [stage-1 7/7] COPY --chown=indexer:indexer sql/ /app/sql/
+#16 CACHED
+
+#17 exporting to image
+#17 exporting layers done
+#17 exporting manifest sha256:2b90ddb7fd5651e07d015122cefe281c178bfe851a5ed33be34e8d46d2d2b897 done
+#17 exporting config sha256:65bc6a57b1b44b172560792b575fe1c585853260bfd9a45bd1092cab7e45ca2b done
+#17 exporting attestation manifest sha256:d27ac57dae9a1bfb3b3b5351e790e9b726086d52266f67ae423df4b12c64f3d4 0.0s done
+#17 exporting manifest list sha256:887c40b2ea2ea5ce038381acf197571b0038004d65375547ed88edca6fd1f9fd
+#17 exporting manifest list sha256:887c40b2ea2ea5ce038381acf197571b0038004d65375547ed88edca6fd1f9fd 0.0s done
+#17 naming to docker.io/library/bsg-rag-indexer-test:local done
+#17 DONE 0.2s
+[exit code: 0]

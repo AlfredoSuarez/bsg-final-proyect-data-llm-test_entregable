@@ -1,0 +1,71 @@
+{
+    "Items": [
+        {
+            "documents_count": {
+                "N": "3"
+            },
+            "chunks_count": {
+                "N": "10"
+            },
+            "created_at": {
+                "S": "2026-06-01T02:02:04.867837+00:00"
+            },
+            "notes": {
+                "S": "files_ok=6 files_failed=0"
+            },
+            "cost_estimate_usd": {
+                "N": "0.0001"
+            },
+            "dataset_hash": {
+                "S": "422a51c8d317c27a8071031c254ffc100fc49da8b08259519e14fcd26e3c6949"
+            },
+            "embeddings_count": {
+                "N": "10"
+            },
+            "embedding_model": {
+                "S": "amazon.titan-embed-text-v2:0"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-015935"
+            },
+            "git_commit": {
+                "S": "step-functions"
+            }
+        },
+        {
+            "documents_count": {
+                "N": "3"
+            },
+            "chunks_count": {
+                "N": "5"
+            },
+            "created_at": {
+                "S": "2026-06-01T01:50:05.972834+00:00"
+            },
+            "notes": {
+                "S": "files_ok=3 files_failed=0"
+            },
+            "cost_estimate_usd": {
+                "N": "0.0001"
+            },
+            "dataset_hash": {
+                "S": "cdedbcf165b0cddbd5e600285d1c9229e8466346ccbc16a526f33d7364bc0011"
+            },
+            "embeddings_count": {
+                "N": "5"
+            },
+            "embedding_model": {
+                "S": "amazon.titan-embed-text-v2:0"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-014747"
+            },
+            "git_commit": {
+                "S": "step-functions"
+            }
+        }
+    ],
+    "Count": 2,
+    "ScannedCount": 2,
+    "ConsumedCapacity": null
+}

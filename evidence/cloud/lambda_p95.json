@@ -1,0 +1,27 @@
+urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'monitoring.us-east-1.amazonaws.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+{
+    "Label": "Duration",
+    "Datapoints": [
+        {
+            "Timestamp": "2026-05-31T19:49:00-06:00",
+            "Unit": "Milliseconds",
+            "ExtendedStatistics": {
+                "p95": 4696.437675943799
+            }
+        },
+        {
+            "Timestamp": "2026-05-31T19:16:00-06:00",
+            "Unit": "Milliseconds",
+            "ExtendedStatistics": {
+                "p95": 47891.06626809073
+            }
+        },
+        {
+            "Timestamp": "2026-05-31T19:17:00-06:00",
+            "Unit": "Milliseconds",
+            "ExtendedStatistics": {
+                "p95": 46205.423822515746
+            }
+        }
+    ]
+}

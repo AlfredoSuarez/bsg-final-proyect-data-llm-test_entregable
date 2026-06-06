@@ -1,0 +1,762 @@
+{
+    "events": [
+        {
+            "timestamp": "2026-05-31T19:59:36.522000-06:00",
+            "type": "ExecutionStarted",
+            "id": 1,
+            "previousEventId": 0,
+            "executionStartedEventDetails": {
+                "input": "{}",
+                "inputDetails": {
+                    "truncated": false
+                },
+                "roleArn": "arn:aws:iam::275541169383:role/bsg-acmeco-rag-dev-stepfunctions-role"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T19:59:36.546000-06:00",
+            "type": "PassStateEntered",
+            "id": 2,
+            "previousEventId": 0,
+            "stateEnteredEventDetails": {
+                "name": "InitializeRun",
+                "input": "{}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T19:59:36.546000-06:00",
+            "type": "PassStateExited",
+            "id": 3,
+            "previousEventId": 2,
+            "stateExitedEventDetails": {
+                "name": "InitializeRun",
+                "output": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\"}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T19:59:36.546000-06:00",
+            "type": "TaskStateEntered",
+            "id": 4,
+            "previousEventId": 3,
+            "stateEnteredEventDetails": {
+                "name": "StartGlueETL",
+                "input": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\"}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T19:59:36.546000-06:00",
+            "type": "TaskScheduled",
+            "id": 5,
+            "previousEventId": 4,
+            "taskScheduledEventDetails": {
+                "resourceType": "glue",
+                "resource": "startJobRun.sync",
+                "region": "us-east-1",
+                "parameters": "{\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"Arguments\":{\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\",\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--input_prefix\":\"raw/\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\"}}"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T19:59:36.597000-06:00",
+            "type": "TaskStarted",
+            "id": 6,
+            "previousEventId": 5,
+            "taskStartedEventDetails": {
+                "resourceType": "glue",
+                "resource": "startJobRun.sync"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T19:59:36.790000-06:00",
+            "type": "TaskSubmitted",
+            "id": 7,
+            "previousEventId": 6,
+            "taskSubmittedEventDetails": {
+                "resourceType": "glue",
+                "resource": "startJobRun.sync",
+                "output": "{\"JobRunId\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"Cache-Control\":[\"no-cache\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"3b24dfba-c43c-418d-8ee8-cbac7ba1f126\"],\"Content-Length\":[\"82\"],\"Date\":[\"Mon, 01 Jun 2026 01:59:36 GMT\"],\"Content-Type\":[\"application/x-amz-json-1.1\"]},\"HttpHeaders\":{\"Cache-Control\":\"no-cache\",\"Connection\":\"keep-alive\",\"Content-Length\":\"82\",\"Content-Type\":\"application/x-amz-json-1.1\",\"Date\":\"Mon, 01 Jun 2026 01:59:36 GMT\",\"x-amzn-RequestId\":\"3b24dfba-c43c-418d-8ee8-cbac7ba1f126\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"3b24dfba-c43c-418d-8ee8-cbac7ba1f126\"},\"JobName\":\"bsg-acmeco-rag-dev-etl\"}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.028000-06:00",
+            "type": "TaskSucceeded",
+            "id": 8,
+            "previousEventId": 7,
+            "taskSucceededEventDetails": {
+                "resourceType": "glue",
+                "resource": "startJobRun.sync",
+                "output": "{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.040000-06:00",
+            "type": "TaskStateExited",
+            "id": 9,
+            "previousEventId": 8,
+            "stateExitedEventDetails": {
+                "name": "StartGlueETL",
+                "output": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"}}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.040000-06:00",
+            "type": "TaskStateEntered",
+            "id": 10,
+            "previousEventId": 9,
+            "stateEnteredEventDetails": {
+                "name": "ListCleanParquetFiles",
+                "input": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"}}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.040000-06:00",
+            "type": "TaskScheduled",
+            "id": 11,
+            "previousEventId": 10,
+            "taskScheduledEventDetails": {
+                "resourceType": "aws-sdk:s3",
+                "resource": "listObjectsV2",
+                "region": "us-east-1",
+                "parameters": "{\"Bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"}"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.097000-06:00",
+            "type": "TaskStarted",
+            "id": 12,
+            "previousEventId": 11,
+            "taskStartedEventDetails": {
+                "resourceType": "aws-sdk:s3",
+                "resource": "listObjectsV2"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.162000-06:00",
+            "type": "TaskSucceeded",
+            "id": 13,
+            "previousEventId": 12,
+            "taskSucceededEventDetails": {
+                "resourceType": "aws-sdk:s3",
+                "resource": "listObjectsV2",
+                "output": "{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "TaskStateExited",
+            "id": 14,
+            "previousEventId": 13,
+            "stateExitedEventDetails": {
+                "name": "ListCleanParquetFiles",
+                "output": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"}}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "MapStateEntered",
+            "id": 15,
+            "previousEventId": 14,
+            "stateEnteredEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "input": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"}}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "MapStateStarted",
+            "id": 16,
+            "previousEventId": 15,
+            "mapStateStartedEventDetails": {
+                "length": 4
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "MapIterationStarted",
+            "id": 17,
+            "previousEventId": 16,
+            "mapIterationStartedEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "index": 0
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "MapIterationStarted",
+            "id": 18,
+            "previousEventId": 16,
+            "mapIterationStartedEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "index": 1
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "MapIterationStarted",
+            "id": 19,
+            "previousEventId": 16,
+            "mapIterationStartedEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "index": 2
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "MapIterationStarted",
+            "id": 20,
+            "previousEventId": 16,
+            "mapIterationStartedEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "index": 3
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "TaskStateEntered",
+            "id": 21,
+            "previousEventId": 17,
+            "stateEnteredEventDetails": {
+                "name": "InvokeChunkingLambda",
+                "input": "{\"version_id\":\"run-demo-20260601-015935\",\"key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\"}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "TaskScheduled",
+            "id": 22,
+            "previousEventId": 21,
+            "taskScheduledEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke",
+                "region": "us-east-1",
+                "parameters": "{\"FunctionName\":\"bsg-acmeco-rag-dev-chunking\",\"Payload\":{\"Records\":[{\"s3\":{\"bucket\":{\"name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\"},\"object\":{\"key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\"}}}],\"version_id\":\"run-demo-20260601-015935\"}}"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "TaskStateEntered",
+            "id": 23,
+            "previousEventId": 18,
+            "stateEnteredEventDetails": {
+                "name": "InvokeChunkingLambda",
+                "input": "{\"version_id\":\"run-demo-20260601-015935\",\"key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\"}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "TaskScheduled",
+            "id": 24,
+            "previousEventId": 23,
+            "taskScheduledEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke",
+                "region": "us-east-1",
+                "parameters": "{\"FunctionName\":\"bsg-acmeco-rag-dev-chunking\",\"Payload\":{\"Records\":[{\"s3\":{\"bucket\":{\"name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\"},\"object\":{\"key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\"}}}],\"version_id\":\"run-demo-20260601-015935\"}}"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "TaskStateEntered",
+            "id": 25,
+            "previousEventId": 19,
+            "stateEnteredEventDetails": {
+                "name": "InvokeChunkingLambda",
+                "input": "{\"version_id\":\"run-demo-20260601-015935\",\"key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\"}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "TaskScheduled",
+            "id": 26,
+            "previousEventId": 25,
+            "taskScheduledEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke",
+                "region": "us-east-1",
+                "parameters": "{\"FunctionName\":\"bsg-acmeco-rag-dev-chunking\",\"Payload\":{\"Records\":[{\"s3\":{\"bucket\":{\"name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\"},\"object\":{\"key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\"}}}],\"version_id\":\"run-demo-20260601-015935\"}}"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "TaskStateEntered",
+            "id": 27,
+            "previousEventId": 20,
+            "stateEnteredEventDetails": {
+                "name": "InvokeChunkingLambda",
+                "input": "{\"version_id\":\"run-demo-20260601-015935\",\"key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\"}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.176000-06:00",
+            "type": "TaskScheduled",
+            "id": 28,
+            "previousEventId": 27,
+            "taskScheduledEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke",
+                "region": "us-east-1",
+                "parameters": "{\"FunctionName\":\"bsg-acmeco-rag-dev-chunking\",\"Payload\":{\"Records\":[{\"s3\":{\"bucket\":{\"name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\"},\"object\":{\"key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\"}}}],\"version_id\":\"run-demo-20260601-015935\"}}"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.239000-06:00",
+            "type": "TaskStarted",
+            "id": 29,
+            "previousEventId": 28,
+            "taskStartedEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.242000-06:00",
+            "type": "TaskStarted",
+            "id": 30,
+            "previousEventId": 22,
+            "taskStartedEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.242000-06:00",
+            "type": "TaskStarted",
+            "id": 31,
+            "previousEventId": 24,
+            "taskStartedEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.245000-06:00",
+            "type": "TaskStarted",
+            "id": 32,
+            "previousEventId": 26,
+            "taskStartedEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.423000-06:00",
+            "type": "TaskSucceeded",
+            "id": 33,
+            "previousEventId": 29,
+            "taskSucceededEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke",
+                "output": "{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.451000-06:00",
+            "type": "TaskStateExited",
+            "id": 34,
+            "previousEventId": 33,
+            "stateExitedEventDetails": {
+                "name": "InvokeChunkingLambda",
+                "output": "{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.451000-06:00",
+            "type": "MapIterationSucceeded",
+            "id": 35,
+            "previousEventId": 34,
+            "mapIterationSucceededEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "index": 3
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.645000-06:00",
+            "type": "TaskSucceeded",
+            "id": 36,
+            "previousEventId": 31,
+            "taskSucceededEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke",
+                "output": "{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.650000-06:00",
+            "type": "TaskSucceeded",
+            "id": 37,
+            "previousEventId": 32,
+            "taskSucceededEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke",
+                "output": "{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.661000-06:00",
+            "type": "TaskStateExited",
+            "id": 38,
+            "previousEventId": 36,
+            "stateExitedEventDetails": {
+                "name": "InvokeChunkingLambda",
+                "output": "{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.661000-06:00",
+            "type": "MapIterationSucceeded",
+            "id": 39,
+            "previousEventId": 38,
+            "mapIterationSucceededEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "index": 1
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.661000-06:00",
+            "type": "TaskStateExited",
+            "id": 40,
+            "previousEventId": 37,
+            "stateExitedEventDetails": {
+                "name": "InvokeChunkingLambda",
+                "output": "{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.661000-06:00",
+            "type": "MapIterationSucceeded",
+            "id": 41,
+            "previousEventId": 40,
+            "mapIterationSucceededEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "index": 2
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.738000-06:00",
+            "type": "TaskSucceeded",
+            "id": 42,
+            "previousEventId": 30,
+            "taskSucceededEventDetails": {
+                "resourceType": "lambda",
+                "resource": "invoke",
+                "output": "{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.751000-06:00",
+            "type": "TaskStateExited",
+            "id": 43,
+            "previousEventId": 42,
+            "stateExitedEventDetails": {
+                "name": "InvokeChunkingLambda",
+                "output": "{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.751000-06:00",
+            "type": "MapIterationSucceeded",
+            "id": 44,
+            "previousEventId": 43,
+            "mapIterationSucceededEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "index": 0
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.751000-06:00",
+            "type": "MapStateSucceeded",
+            "id": 45,
+            "previousEventId": 44
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.751000-06:00",
+            "type": "MapStateExited",
+            "id": 46,
+            "previousEventId": 44,
+            "stateExitedEventDetails": {
+                "name": "ChunkAllParquetsInParallel",
+                "output": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"},\"chunking_results\":[{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}]}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.751000-06:00",
+            "type": "TaskStateEntered",
+            "id": 47,
+            "previousEventId": 46,
+            "stateEnteredEventDetails": {
+                "name": "RunIndexerTask",
+                "input": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"},\"chunking_results\":[{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}]}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.751000-06:00",
+            "type": "TaskScheduled",
+            "id": 48,
+            "previousEventId": 47,
+            "taskScheduledEventDetails": {
+                "resourceType": "ecs",
+                "resource": "runTask.sync",
+                "region": "us-east-1",
+                "parameters": "{\"Cluster\":\"arn:aws:ecs:us-east-1:275541169383:cluster/bsg-acmeco-rag-dev-cluster\",\"TaskDefinition\":\"arn:aws:ecs:us-east-1:275541169383:task-definition/bsg-acmeco-rag-dev-indexer:2\",\"LaunchType\":\"FARGATE\",\"NetworkConfiguration\":{\"AwsvpcConfiguration\":{\"Subnets\":[\"subnet-054de0db17d06b56f\",\"subnet-0145b501505bf3690\"],\"SecurityGroups\":[\"sg-046195cfd5e3072e7\"],\"AssignPublicIp\":\"DISABLED\"}},\"Overrides\":{\"ContainerOverrides\":[{\"Name\":\"indexer\",\"Environment\":[{\"Name\":\"VERSION_ID\",\"Value\":\"run-demo-20260601-015935\"},{\"Name\":\"GIT_COMMIT\",\"Value\":\"step-functions\"}]}]},\"StartedBy\":\"AWS Step Functions\"}"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:42.849000-06:00",
+            "type": "TaskStarted",
+            "id": 49,
+            "previousEventId": 48,
+            "taskStartedEventDetails": {
+                "resourceType": "ecs",
+                "resource": "runTask.sync"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:01:43.769000-06:00",
+            "type": "TaskSubmitted",
+            "id": 50,
+            "previousEventId": 49,
+            "taskSubmittedEventDetails": {
+                "resourceType": "ecs",
+                "resource": "runTask.sync",
+                "output": "{\"Failures\":[],\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"x-amzn-RequestId\":[\"5025dda7-016d-4986-8e97-168e71dd425c\"],\"Content-Length\":[\"1680\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:43 GMT\"],\"Content-Type\":[\"application/x-amz-json-1.1\"]},\"HttpHeaders\":{\"Content-Length\":\"1680\",\"Content-Type\":\"application/x-amz-json-1.1\",\"Date\":\"Mon, 01 Jun 2026 02:01:43 GMT\",\"x-amzn-RequestId\":\"5025dda7-016d-4986-8e97-168e71dd425c\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"5025dda7-016d-4986-8e97-168e71dd425c\"},\"Tasks\":[{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-054de0db17d06b56f\"}],\"Id\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"Status\":\"PRECREATED\",\"Type\":\"ElasticNetworkInterface\"}],\"Attributes\":[{\"Name\":\"ecs.cpu-architecture\",\"Value\":\"arm64\"}],\"AvailabilityZone\":\"us-east-1a\",\"ClusterArn\":\"arn:aws:ecs:us-east-1:275541169383:cluster/bsg-acmeco-rag-dev-cluster\",\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:us-east-1:275541169383:container/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e/5f61865b-9860-45c6-be9c-de72dbba2d1f\",\"Cpu\":\"0\",\"GpuIds\":[],\"Image\":\"275541169383.dkr.ecr.us-east-1.amazonaws.com/bsg-acmeco-rag-dev-indexer:latest\",\"LastStatus\":\"PENDING\",\"ManagedAgents\":[],\"Name\":\"indexer\",\"NetworkBindings\":[],\"NetworkInterfaces\":[],\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\"}],\"Cpu\":\"1024\",\"CreatedAt\":1780279303705,\"DesiredStatus\":\"RUNNING\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":21},\"FargateEphemeralStorage\":{\"SizeInGiB\":21},\"Group\":\"family:bsg-acmeco-rag-dev-indexer\",\"InferenceAccelerators\":[],\"LastStatus\":\"PROVISIONING\",\"LaunchType\":\"FARGATE\",\"Memory\":\"2048\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[{\"Name\":\"VERSION_ID\",\"Value\":\"run-demo-20260601-015935\"},{\"Name\":\"GIT_COMMIT\",\"Value\":\"step-functions\"}],\"EnvironmentFiles\":[],\"Name\":\"indexer\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformFamily\":\"Linux\",\"PlatformVersion\":\"1.4.0\",\"StartedBy\":\"AWS Step Functions\",\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\",\"TaskDefinitionArn\":\"arn:aws:ecs:us-east-1:275541169383:task-definition/bsg-acmeco-rag-dev-indexer:2\",\"Version\":1}]}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:31.998000-06:00",
+            "type": "TaskSucceeded",
+            "id": 51,
+            "previousEventId": 50,
+            "taskSucceededEventDetails": {
+                "resourceType": "ecs",
+                "resource": "runTask.sync",
+                "output": "{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-054de0db17d06b56f\"},{\"Name\":\"networkInterfaceId\",\"Value\":\"eni-005de9a063b4dc1dd\"},{\"Name\":\"macAddress\",\"Value\":\"0a:ff:ce:7f:29:81\"},{\"Name\":\"privateDnsName\",\"Value\":\"ip-10-42-1-191.ec2.internal\"},{\"Name\":\"privateIPv4Address\",\"Value\":\"10.42.1.191\"}],\"Id\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"Status\":\"DELETED\",\"Type\":\"eni\"}],\"Attributes\":[{\"Name\":\"ecs.cpu-architecture\",\"Value\":\"arm64\"}],\"AvailabilityZone\":\"us-east-1a\",\"ClusterArn\":\"arn:aws:ecs:us-east-1:275541169383:cluster/bsg-acmeco-rag-dev-cluster\",\"Connectivity\":\"CONNECTED\",\"ConnectivityAt\":1780279308542,\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:us-east-1:275541169383:container/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e/5f61865b-9860-45c6-be9c-de72dbba2d1f\",\"Cpu\":\"0\",\"ExitCode\":0,\"GpuIds\":[],\"Image\":\"275541169383.dkr.ecr.us-east-1.amazonaws.com/bsg-acmeco-rag-dev-indexer:latest\",\"ImageDigest\":\"sha256:70ce4b8a0ad6fa0de841b2cde3e8b45b5721549cd5db0c6e85e3bf222a84e8b1\",\"LastStatus\":\"STOPPED\",\"ManagedAgents\":[],\"Name\":\"indexer\",\"NetworkBindings\":[],\"NetworkInterfaces\":[{\"AttachmentId\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"PrivateIpv4Address\":\"10.42.1.191\"}],\"RuntimeId\":\"4cf297a99d5e4503b6821f10ff07954e-2682762536\",\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\"}],\"Cpu\":\"1024\",\"CreatedAt\":1780279303705,\"DesiredStatus\":\"STOPPED\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":21},\"ExecutionStoppedAt\":1780279325090,\"Group\":\"family:bsg-acmeco-rag-dev-indexer\",\"InferenceAccelerators\":[],\"LastStatus\":\"STOPPED\",\"LaunchType\":\"FARGATE\",\"Memory\":\"2048\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[{\"Name\":\"VERSION_ID\",\"Value\":\"run-demo-20260601-015935\"},{\"Name\":\"GIT_COMMIT\",\"Value\":\"step-functions\"}],\"EnvironmentFiles\":[],\"Name\":\"indexer\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"PullStartedAt\":1780279316455,\"PullStoppedAt\":1780279321653,\"StartedAt\":1780279322934,\"StartedBy\":\"AWS Step Functions\",\"StopCode\":\"EssentialContainerExited\",\"StoppedAt\":1780279350815,\"StoppedReason\":\"Essential container in task exited\",\"StoppingAt\":1780279335131,\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\",\"TaskDefinitionArn\":\"arn:aws:ecs:us-east-1:275541169383:task-definition/bsg-acmeco-rag-dev-indexer:2\",\"Version\":5}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.015000-06:00",
+            "type": "TaskStateExited",
+            "id": 52,
+            "previousEventId": 51,
+            "stateExitedEventDetails": {
+                "name": "RunIndexerTask",
+                "output": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"},\"chunking_results\":[{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}],\"indexer_result\":{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-054de0db17d06b56f\"},{\"Name\":\"networkInterfaceId\",\"Value\":\"eni-005de9a063b4dc1dd\"},{\"Name\":\"macAddress\",\"Value\":\"0a:ff:ce:7f:29:81\"},{\"Name\":\"privateDnsName\",\"Value\":\"ip-10-42-1-191.ec2.internal\"},{\"Name\":\"privateIPv4Address\",\"Value\":\"10.42.1.191\"}],\"Id\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"Status\":\"DELETED\",\"Type\":\"eni\"}],\"Attributes\":[{\"Name\":\"ecs.cpu-architecture\",\"Value\":\"arm64\"}],\"AvailabilityZone\":\"us-east-1a\",\"ClusterArn\":\"arn:aws:ecs:us-east-1:275541169383:cluster/bsg-acmeco-rag-dev-cluster\",\"Connectivity\":\"CONNECTED\",\"ConnectivityAt\":1780279308542,\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:us-east-1:275541169383:container/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e/5f61865b-9860-45c6-be9c-de72dbba2d1f\",\"Cpu\":\"0\",\"ExitCode\":0,\"GpuIds\":[],\"Image\":\"275541169383.dkr.ecr.us-east-1.amazonaws.com/bsg-acmeco-rag-dev-indexer:latest\",\"ImageDigest\":\"sha256:70ce4b8a0ad6fa0de841b2cde3e8b45b5721549cd5db0c6e85e3bf222a84e8b1\",\"LastStatus\":\"STOPPED\",\"ManagedAgents\":[],\"Name\":\"indexer\",\"NetworkBindings\":[],\"NetworkInterfaces\":[{\"AttachmentId\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"PrivateIpv4Address\":\"10.42.1.191\"}],\"RuntimeId\":\"4cf297a99d5e4503b6821f10ff07954e-2682762536\",\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\"}],\"Cpu\":\"1024\",\"CreatedAt\":1780279303705,\"DesiredStatus\":\"STOPPED\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":21},\"ExecutionStoppedAt\":1780279325090,\"Group\":\"family:bsg-acmeco-rag-dev-indexer\",\"InferenceAccelerators\":[],\"LastStatus\":\"STOPPED\",\"LaunchType\":\"FARGATE\",\"Memory\":\"2048\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[{\"Name\":\"VERSION_ID\",\"Value\":\"run-demo-20260601-015935\"},{\"Name\":\"GIT_COMMIT\",\"Value\":\"step-functions\"}],\"EnvironmentFiles\":[],\"Name\":\"indexer\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"PullStartedAt\":1780279316455,\"PullStoppedAt\":1780279321653,\"StartedAt\":1780279322934,\"StartedBy\":\"AWS Step Functions\",\"StopCode\":\"EssentialContainerExited\",\"StoppedAt\":1780279350815,\"StoppedReason\":\"Essential container in task exited\",\"StoppingAt\":1780279335131,\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\",\"TaskDefinitionArn\":\"arn:aws:ecs:us-east-1:275541169383:task-definition/bsg-acmeco-rag-dev-indexer:2\",\"Version\":5}}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.015000-06:00",
+            "type": "TaskStateEntered",
+            "id": 53,
+            "previousEventId": 52,
+            "stateEnteredEventDetails": {
+                "name": "PublishCustomMetric",
+                "input": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"},\"chunking_results\":[{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}],\"indexer_result\":{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-054de0db17d06b56f\"},{\"Name\":\"networkInterfaceId\",\"Value\":\"eni-005de9a063b4dc1dd\"},{\"Name\":\"macAddress\",\"Value\":\"0a:ff:ce:7f:29:81\"},{\"Name\":\"privateDnsName\",\"Value\":\"ip-10-42-1-191.ec2.internal\"},{\"Name\":\"privateIPv4Address\",\"Value\":\"10.42.1.191\"}],\"Id\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"Status\":\"DELETED\",\"Type\":\"eni\"}],\"Attributes\":[{\"Name\":\"ecs.cpu-architecture\",\"Value\":\"arm64\"}],\"AvailabilityZone\":\"us-east-1a\",\"ClusterArn\":\"arn:aws:ecs:us-east-1:275541169383:cluster/bsg-acmeco-rag-dev-cluster\",\"Connectivity\":\"CONNECTED\",\"ConnectivityAt\":1780279308542,\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:us-east-1:275541169383:container/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e/5f61865b-9860-45c6-be9c-de72dbba2d1f\",\"Cpu\":\"0\",\"ExitCode\":0,\"GpuIds\":[],\"Image\":\"275541169383.dkr.ecr.us-east-1.amazonaws.com/bsg-acmeco-rag-dev-indexer:latest\",\"ImageDigest\":\"sha256:70ce4b8a0ad6fa0de841b2cde3e8b45b5721549cd5db0c6e85e3bf222a84e8b1\",\"LastStatus\":\"STOPPED\",\"ManagedAgents\":[],\"Name\":\"indexer\",\"NetworkBindings\":[],\"NetworkInterfaces\":[{\"AttachmentId\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"PrivateIpv4Address\":\"10.42.1.191\"}],\"RuntimeId\":\"4cf297a99d5e4503b6821f10ff07954e-2682762536\",\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\"}],\"Cpu\":\"1024\",\"CreatedAt\":1780279303705,\"DesiredStatus\":\"STOPPED\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":21},\"ExecutionStoppedAt\":1780279325090,\"Group\":\"family:bsg-acmeco-rag-dev-indexer\",\"InferenceAccelerators\":[],\"LastStatus\":\"STOPPED\",\"LaunchType\":\"FARGATE\",\"Memory\":\"2048\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[{\"Name\":\"VERSION_ID\",\"Value\":\"run-demo-20260601-015935\"},{\"Name\":\"GIT_COMMIT\",\"Value\":\"step-functions\"}],\"EnvironmentFiles\":[],\"Name\":\"indexer\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"PullStartedAt\":1780279316455,\"PullStoppedAt\":1780279321653,\"StartedAt\":1780279322934,\"StartedBy\":\"AWS Step Functions\",\"StopCode\":\"EssentialContainerExited\",\"StoppedAt\":1780279350815,\"StoppedReason\":\"Essential container in task exited\",\"StoppingAt\":1780279335131,\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\",\"TaskDefinitionArn\":\"arn:aws:ecs:us-east-1:275541169383:task-definition/bsg-acmeco-rag-dev-indexer:2\",\"Version\":5}}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.015000-06:00",
+            "type": "TaskScheduled",
+            "id": 54,
+            "previousEventId": 53,
+            "taskScheduledEventDetails": {
+                "resourceType": "aws-sdk:cloudwatch",
+                "resource": "putMetricData",
+                "region": "us-east-1",
+                "parameters": "{\"Namespace\":\"RAGPipeline\",\"MetricData\":[{\"MetricName\":\"PipelineRunsSucceeded\",\"Value\":1,\"Unit\":\"Count\",\"Dimensions\":[{\"Name\":\"Environment\",\"Value\":\"dev\"}]}]}"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.071000-06:00",
+            "type": "TaskStarted",
+            "id": 55,
+            "previousEventId": 54,
+            "taskStartedEventDetails": {
+                "resourceType": "aws-sdk:cloudwatch",
+                "resource": "putMetricData"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.127000-06:00",
+            "type": "TaskSucceeded",
+            "id": 56,
+            "previousEventId": 55,
+            "taskSucceededEventDetails": {
+                "resourceType": "aws-sdk:cloudwatch",
+                "resource": "putMetricData",
+                "output": "{}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.143000-06:00",
+            "type": "TaskStateExited",
+            "id": 57,
+            "previousEventId": 56,
+            "stateExitedEventDetails": {
+                "name": "PublishCustomMetric",
+                "output": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"},\"chunking_results\":[{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}],\"indexer_result\":{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-054de0db17d06b56f\"},{\"Name\":\"networkInterfaceId\",\"Value\":\"eni-005de9a063b4dc1dd\"},{\"Name\":\"macAddress\",\"Value\":\"0a:ff:ce:7f:29:81\"},{\"Name\":\"privateDnsName\",\"Value\":\"ip-10-42-1-191.ec2.internal\"},{\"Name\":\"privateIPv4Address\",\"Value\":\"10.42.1.191\"}],\"Id\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"Status\":\"DELETED\",\"Type\":\"eni\"}],\"Attributes\":[{\"Name\":\"ecs.cpu-architecture\",\"Value\":\"arm64\"}],\"AvailabilityZone\":\"us-east-1a\",\"ClusterArn\":\"arn:aws:ecs:us-east-1:275541169383:cluster/bsg-acmeco-rag-dev-cluster\",\"Connectivity\":\"CONNECTED\",\"ConnectivityAt\":1780279308542,\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:us-east-1:275541169383:container/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e/5f61865b-9860-45c6-be9c-de72dbba2d1f\",\"Cpu\":\"0\",\"ExitCode\":0,\"GpuIds\":[],\"Image\":\"275541169383.dkr.ecr.us-east-1.amazonaws.com/bsg-acmeco-rag-dev-indexer:latest\",\"ImageDigest\":\"sha256:70ce4b8a0ad6fa0de841b2cde3e8b45b5721549cd5db0c6e85e3bf222a84e8b1\",\"LastStatus\":\"STOPPED\",\"ManagedAgents\":[],\"Name\":\"indexer\",\"NetworkBindings\":[],\"NetworkInterfaces\":[{\"AttachmentId\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"PrivateIpv4Address\":\"10.42.1.191\"}],\"RuntimeId\":\"4cf297a99d5e4503b6821f10ff07954e-2682762536\",\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\"}],\"Cpu\":\"1024\",\"CreatedAt\":1780279303705,\"DesiredStatus\":\"STOPPED\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":21},\"ExecutionStoppedAt\":1780279325090,\"Group\":\"family:bsg-acmeco-rag-dev-indexer\",\"InferenceAccelerators\":[],\"LastStatus\":\"STOPPED\",\"LaunchType\":\"FARGATE\",\"Memory\":\"2048\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[{\"Name\":\"VERSION_ID\",\"Value\":\"run-demo-20260601-015935\"},{\"Name\":\"GIT_COMMIT\",\"Value\":\"step-functions\"}],\"EnvironmentFiles\":[],\"Name\":\"indexer\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"PullStartedAt\":1780279316455,\"PullStoppedAt\":1780279321653,\"StartedAt\":1780279322934,\"StartedBy\":\"AWS Step Functions\",\"StopCode\":\"EssentialContainerExited\",\"StoppedAt\":1780279350815,\"StoppedReason\":\"Essential container in task exited\",\"StoppingAt\":1780279335131,\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\",\"TaskDefinitionArn\":\"arn:aws:ecs:us-east-1:275541169383:task-definition/bsg-acmeco-rag-dev-indexer:2\",\"Version\":5},\"metric_result\":{}}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.143000-06:00",
+            "type": "TaskStateEntered",
+            "id": 58,
+            "previousEventId": 57,
+            "stateEnteredEventDetails": {
+                "name": "NotifySuccess",
+                "input": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"},\"chunking_results\":[{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}],\"indexer_result\":{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-054de0db17d06b56f\"},{\"Name\":\"networkInterfaceId\",\"Value\":\"eni-005de9a063b4dc1dd\"},{\"Name\":\"macAddress\",\"Value\":\"0a:ff:ce:7f:29:81\"},{\"Name\":\"privateDnsName\",\"Value\":\"ip-10-42-1-191.ec2.internal\"},{\"Name\":\"privateIPv4Address\",\"Value\":\"10.42.1.191\"}],\"Id\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"Status\":\"DELETED\",\"Type\":\"eni\"}],\"Attributes\":[{\"Name\":\"ecs.cpu-architecture\",\"Value\":\"arm64\"}],\"AvailabilityZone\":\"us-east-1a\",\"ClusterArn\":\"arn:aws:ecs:us-east-1:275541169383:cluster/bsg-acmeco-rag-dev-cluster\",\"Connectivity\":\"CONNECTED\",\"ConnectivityAt\":1780279308542,\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:us-east-1:275541169383:container/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e/5f61865b-9860-45c6-be9c-de72dbba2d1f\",\"Cpu\":\"0\",\"ExitCode\":0,\"GpuIds\":[],\"Image\":\"275541169383.dkr.ecr.us-east-1.amazonaws.com/bsg-acmeco-rag-dev-indexer:latest\",\"ImageDigest\":\"sha256:70ce4b8a0ad6fa0de841b2cde3e8b45b5721549cd5db0c6e85e3bf222a84e8b1\",\"LastStatus\":\"STOPPED\",\"ManagedAgents\":[],\"Name\":\"indexer\",\"NetworkBindings\":[],\"NetworkInterfaces\":[{\"AttachmentId\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"PrivateIpv4Address\":\"10.42.1.191\"}],\"RuntimeId\":\"4cf297a99d5e4503b6821f10ff07954e-2682762536\",\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\"}],\"Cpu\":\"1024\",\"CreatedAt\":1780279303705,\"DesiredStatus\":\"STOPPED\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":21},\"ExecutionStoppedAt\":1780279325090,\"Group\":\"family:bsg-acmeco-rag-dev-indexer\",\"InferenceAccelerators\":[],\"LastStatus\":\"STOPPED\",\"LaunchType\":\"FARGATE\",\"Memory\":\"2048\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[{\"Name\":\"VERSION_ID\",\"Value\":\"run-demo-20260601-015935\"},{\"Name\":\"GIT_COMMIT\",\"Value\":\"step-functions\"}],\"EnvironmentFiles\":[],\"Name\":\"indexer\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"PullStartedAt\":1780279316455,\"PullStoppedAt\":1780279321653,\"StartedAt\":1780279322934,\"StartedBy\":\"AWS Step Functions\",\"StopCode\":\"EssentialContainerExited\",\"StoppedAt\":1780279350815,\"StoppedReason\":\"Essential container in task exited\",\"StoppingAt\":1780279335131,\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\",\"TaskDefinitionArn\":\"arn:aws:ecs:us-east-1:275541169383:task-definition/bsg-acmeco-rag-dev-indexer:2\",\"Version\":5},\"metric_result\":{}}",
+                "inputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.143000-06:00",
+            "type": "TaskScheduled",
+            "id": 59,
+            "previousEventId": 58,
+            "taskScheduledEventDetails": {
+                "resourceType": "sns",
+                "resource": "publish",
+                "region": "us-east-1",
+                "parameters": "{\"TopicArn\":\"arn:aws:sns:us-east-1:275541169383:bsg-acmeco-rag-dev-pipeline-success\",\"Message\":\"Run run-demo-20260601-015935 completado. Indexer status: STOPPED. Started: 2026-06-01T01:59:36.522Z.\",\"Subject\":\"[RAG Pipeline OK] run-demo-20260601-015935\"}"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.192000-06:00",
+            "type": "TaskStarted",
+            "id": 60,
+            "previousEventId": 59,
+            "taskStartedEventDetails": {
+                "resourceType": "sns",
+                "resource": "publish"
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.270000-06:00",
+            "type": "TaskSucceeded",
+            "id": 61,
+            "previousEventId": 60,
+            "taskSucceededEventDetails": {
+                "resourceType": "sns",
+                "resource": "publish",
+                "output": "{\"MessageId\":\"f2df53f5-2493-538a-8ef5-3163ceebb355\",\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"x-amzn-RequestId\":[\"d4939fce-976b-4b16-8d72-93260af0fae6\"],\"connection\":[\"keep-alive\"],\"Content-Length\":[\"294\"],\"Date\":[\"Mon, 01 Jun 2026 02:02:32 GMT\"],\"Content-Type\":[\"text/xml\"]},\"HttpHeaders\":{\"connection\":\"keep-alive\",\"Content-Length\":\"294\",\"Content-Type\":\"text/xml\",\"Date\":\"Mon, 01 Jun 2026 02:02:32 GMT\",\"x-amzn-RequestId\":\"d4939fce-976b-4b16-8d72-93260af0fae6\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"d4939fce-976b-4b16-8d72-93260af0fae6\"}}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.294000-06:00",
+            "type": "TaskStateExited",
+            "id": 62,
+            "previousEventId": 61,
+            "stateExitedEventDetails": {
+                "name": "NotifySuccess",
+                "output": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"},\"chunking_results\":[{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}],\"indexer_result\":{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-054de0db17d06b56f\"},{\"Name\":\"networkInterfaceId\",\"Value\":\"eni-005de9a063b4dc1dd\"},{\"Name\":\"macAddress\",\"Value\":\"0a:ff:ce:7f:29:81\"},{\"Name\":\"privateDnsName\",\"Value\":\"ip-10-42-1-191.ec2.internal\"},{\"Name\":\"privateIPv4Address\",\"Value\":\"10.42.1.191\"}],\"Id\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"Status\":\"DELETED\",\"Type\":\"eni\"}],\"Attributes\":[{\"Name\":\"ecs.cpu-architecture\",\"Value\":\"arm64\"}],\"AvailabilityZone\":\"us-east-1a\",\"ClusterArn\":\"arn:aws:ecs:us-east-1:275541169383:cluster/bsg-acmeco-rag-dev-cluster\",\"Connectivity\":\"CONNECTED\",\"ConnectivityAt\":1780279308542,\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:us-east-1:275541169383:container/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e/5f61865b-9860-45c6-be9c-de72dbba2d1f\",\"Cpu\":\"0\",\"ExitCode\":0,\"GpuIds\":[],\"Image\":\"275541169383.dkr.ecr.us-east-1.amazonaws.com/bsg-acmeco-rag-dev-indexer:latest\",\"ImageDigest\":\"sha256:70ce4b8a0ad6fa0de841b2cde3e8b45b5721549cd5db0c6e85e3bf222a84e8b1\",\"LastStatus\":\"STOPPED\",\"ManagedAgents\":[],\"Name\":\"indexer\",\"NetworkBindings\":[],\"NetworkInterfaces\":[{\"AttachmentId\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"PrivateIpv4Address\":\"10.42.1.191\"}],\"RuntimeId\":\"4cf297a99d5e4503b6821f10ff07954e-2682762536\",\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\"}],\"Cpu\":\"1024\",\"CreatedAt\":1780279303705,\"DesiredStatus\":\"STOPPED\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":21},\"ExecutionStoppedAt\":1780279325090,\"Group\":\"family:bsg-acmeco-rag-dev-indexer\",\"InferenceAccelerators\":[],\"LastStatus\":\"STOPPED\",\"LaunchType\":\"FARGATE\",\"Memory\":\"2048\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[{\"Name\":\"VERSION_ID\",\"Value\":\"run-demo-20260601-015935\"},{\"Name\":\"GIT_COMMIT\",\"Value\":\"step-functions\"}],\"EnvironmentFiles\":[],\"Name\":\"indexer\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"PullStartedAt\":1780279316455,\"PullStoppedAt\":1780279321653,\"StartedAt\":1780279322934,\"StartedBy\":\"AWS Step Functions\",\"StopCode\":\"EssentialContainerExited\",\"StoppedAt\":1780279350815,\"StoppedReason\":\"Essential container in task exited\",\"StoppingAt\":1780279335131,\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\",\"TaskDefinitionArn\":\"arn:aws:ecs:us-east-1:275541169383:task-definition/bsg-acmeco-rag-dev-indexer:2\",\"Version\":5},\"metric_result\":{}}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        },
+        {
+            "timestamp": "2026-05-31T20:02:32.332000-06:00",
+            "type": "ExecutionSucceeded",
+            "id": 63,
+            "previousEventId": 62,
+            "executionSucceededEventDetails": {
+                "output": "{\"started_at\":\"2026-06-01T01:59:36.522Z\",\"version_id\":\"run-demo-20260601-015935\",\"execution_arn\":\"arn:aws:states:us-east-1:275541169383:execution:bsg-acmeco-rag-dev-pipeline:demo-20260601-015935\",\"glue_result\":{\"AllocatedCapacity\":4,\"Arguments\":{\"--output_bucket\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"--output_prefix\":\"clean/\",\"--version_id\":\"run-demo-20260601-015935\",\"--input_prefix\":\"raw/\",\"--input_bucket\":\"bsg-acmeco-rag-dev-raw-docs-275541169383\"},\"Attempt\":0,\"CompletedOn\":1780279262911,\"DPUSeconds\":300.0,\"ExecutionTime\":75,\"GlueVersion\":\"4.0\",\"Id\":\"jr_9b467a21ac0380ad3317c5b8595490f87f84d2568e7ffae01bfac1a043ad2a21\",\"JobMode\":\"SCRIPT\",\"JobName\":\"bsg-acmeco-rag-dev-etl\",\"JobRunState\":\"SUCCEEDED\",\"LastModifiedOn\":1780279262911,\"LogGroupName\":\"/aws-glue/jobs\",\"MaxCapacity\":4.0,\"NumberOfWorkers\":4,\"PredecessorRuns\":[],\"StartedOn\":1780279176741,\"Timeout\":60,\"WorkerType\":\"G.1X\"},\"parquet_list\":{\"Contents\":[{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"e9825e2f5dad1f12b1f1093c2d17a9ca-1\\\"\",\"Key\":\"clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":6671,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"1454917986bf0202e7e0976ae927e901-1\\\"\",\"Key\":\"clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":9100,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"b38ddc21c7e8b886423fa21171095630-1\\\"\",\"Key\":\"clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":8806,\"StorageClass\":\"STANDARD\"},{\"ChecksumAlgorithm\":[\"CRC64NVME\"],\"ChecksumType\":\"FULL_OBJECT\",\"ETag\":\"\\\"22c250a0e7efe780cbd7a2f5ac932e9a-1\\\"\",\"Key\":\"clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\",\"LastModified\":\"2026-06-01T02:00:49Z\",\"Size\":5164,\"StorageClass\":\"STANDARD\"}],\"IsTruncated\":false,\"KeyCount\":4,\"MaxKeys\":1000,\"Name\":\"bsg-acmeco-rag-dev-clean-docs-275541169383\",\"Prefix\":\"clean/\"},\"chunking_results\":[{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=contract/part-00000-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 3, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.42, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"],\"Content-Length\":[\"546\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"546\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=13718ffd832f26d3;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"9410dd1c-1b00-4ed0-86f0-9ddb49d5086e\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=dossier_icp/part-00001-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"99d658b4-1695-4b91-a642-de2f6ee0a464\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=564fb2def345e2ec;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"99d658b4-1695-4b91-a642-de2f6ee0a464\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=faq/part-00002-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 1, \\\"chunks_generated\\\": 1, \\\"chunks_embedded\\\": 1, \\\"chunks_discarded\\\": 0, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.34, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"],\"Content-Length\":[\"536\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"536\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=0524a87e2aa66542;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"b71eba8d-7d8c-47a5-a5db-750a849dcda5\"},\"StatusCode\":200},{\"ExecutedVersion\":\"$LATEST\",\"Payload\":{\"statusCode\":200,\"body\":\"[{\\\"input\\\": \\\"s3://bsg-acmeco-rag-dev-clean-docs-275541169383/clean/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000.snappy.parquet\\\", \\\"output\\\": \\\"s3://bsg-acmeco-rag-dev-embeddings-275541169383/embeddings/doc_type=manual_tech/part-00003-c4b75a1d-46a7-48fe-af0d-621a1dafb918.c000_embeddings.parquet\\\", \\\"rows_in\\\": 3, \\\"chunks_generated\\\": 3, \\\"chunks_embedded\\\": 0, \\\"chunks_discarded\\\": 3, \\\"chunks_failed\\\": 0, \\\"elapsed_seconds\\\": 0.11, \\\"version_id\\\": \\\"run-demo-20260601-015935\\\"}]\"},\"SdkHttpMetadata\":{\"AllHttpHeaders\":{\"X-Amz-Executed-Version\":[\"$LATEST\"],\"x-amzn-Remapped-Content-Length\":[\"0\"],\"Connection\":[\"keep-alive\"],\"x-amzn-RequestId\":[\"6a437bb4-4b46-494e-8d0e-5c838424d799\"],\"Content-Length\":[\"552\"],\"Date\":[\"Mon, 01 Jun 2026 02:01:42 GMT\"],\"X-Amzn-Trace-Id\":[\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"],\"Content-Type\":[\"application/json\"]},\"HttpHeaders\":{\"Connection\":\"keep-alive\",\"Content-Length\":\"552\",\"Content-Type\":\"application/json\",\"Date\":\"Mon, 01 Jun 2026 02:01:42 GMT\",\"X-Amz-Executed-Version\":\"$LATEST\",\"x-amzn-Remapped-Content-Length\":\"0\",\"x-amzn-RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\",\"X-Amzn-Trace-Id\":\"Root=1-6a1ce788-4eb50a5422d0ec46c1f90e6a;Parent=719c8ba00369777a;Sampled=1;Lineage=1:cf901a6c:0\"},\"HttpStatusCode\":200},\"SdkResponseMetadata\":{\"RequestId\":\"6a437bb4-4b46-494e-8d0e-5c838424d799\"},\"StatusCode\":200}],\"indexer_result\":{\"Attachments\":[{\"Details\":[{\"Name\":\"subnetId\",\"Value\":\"subnet-054de0db17d06b56f\"},{\"Name\":\"networkInterfaceId\",\"Value\":\"eni-005de9a063b4dc1dd\"},{\"Name\":\"macAddress\",\"Value\":\"0a:ff:ce:7f:29:81\"},{\"Name\":\"privateDnsName\",\"Value\":\"ip-10-42-1-191.ec2.internal\"},{\"Name\":\"privateIPv4Address\",\"Value\":\"10.42.1.191\"}],\"Id\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"Status\":\"DELETED\",\"Type\":\"eni\"}],\"Attributes\":[{\"Name\":\"ecs.cpu-architecture\",\"Value\":\"arm64\"}],\"AvailabilityZone\":\"us-east-1a\",\"ClusterArn\":\"arn:aws:ecs:us-east-1:275541169383:cluster/bsg-acmeco-rag-dev-cluster\",\"Connectivity\":\"CONNECTED\",\"ConnectivityAt\":1780279308542,\"Containers\":[{\"ContainerArn\":\"arn:aws:ecs:us-east-1:275541169383:container/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e/5f61865b-9860-45c6-be9c-de72dbba2d1f\",\"Cpu\":\"0\",\"ExitCode\":0,\"GpuIds\":[],\"Image\":\"275541169383.dkr.ecr.us-east-1.amazonaws.com/bsg-acmeco-rag-dev-indexer:latest\",\"ImageDigest\":\"sha256:70ce4b8a0ad6fa0de841b2cde3e8b45b5721549cd5db0c6e85e3bf222a84e8b1\",\"LastStatus\":\"STOPPED\",\"ManagedAgents\":[],\"Name\":\"indexer\",\"NetworkBindings\":[],\"NetworkInterfaces\":[{\"AttachmentId\":\"0201eb8e-9cbc-41b0-bdb8-5cc97320a59c\",\"PrivateIpv4Address\":\"10.42.1.191\"}],\"RuntimeId\":\"4cf297a99d5e4503b6821f10ff07954e-2682762536\",\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\"}],\"Cpu\":\"1024\",\"CreatedAt\":1780279303705,\"DesiredStatus\":\"STOPPED\",\"EnableExecuteCommand\":false,\"EphemeralStorage\":{\"SizeInGiB\":21},\"ExecutionStoppedAt\":1780279325090,\"Group\":\"family:bsg-acmeco-rag-dev-indexer\",\"InferenceAccelerators\":[],\"LastStatus\":\"STOPPED\",\"LaunchType\":\"FARGATE\",\"Memory\":\"2048\",\"Overrides\":{\"ContainerOverrides\":[{\"Command\":[],\"Environment\":[{\"Name\":\"VERSION_ID\",\"Value\":\"run-demo-20260601-015935\"},{\"Name\":\"GIT_COMMIT\",\"Value\":\"step-functions\"}],\"EnvironmentFiles\":[],\"Name\":\"indexer\",\"ResourceRequirements\":[]}],\"InferenceAcceleratorOverrides\":[]},\"PlatformVersion\":\"1.4.0\",\"PullStartedAt\":1780279316455,\"PullStoppedAt\":1780279321653,\"StartedAt\":1780279322934,\"StartedBy\":\"AWS Step Functions\",\"StopCode\":\"EssentialContainerExited\",\"StoppedAt\":1780279350815,\"StoppedReason\":\"Essential container in task exited\",\"StoppingAt\":1780279335131,\"Tags\":[],\"TaskArn\":\"arn:aws:ecs:us-east-1:275541169383:task/bsg-acmeco-rag-dev-cluster/4cf297a99d5e4503b6821f10ff07954e\",\"TaskDefinitionArn\":\"arn:aws:ecs:us-east-1:275541169383:task-definition/bsg-acmeco-rag-dev-indexer:2\",\"Version\":5},\"metric_result\":{}}",
+                "outputDetails": {
+                    "truncated": false
+                }
+            }
+        }
+    ]
+}

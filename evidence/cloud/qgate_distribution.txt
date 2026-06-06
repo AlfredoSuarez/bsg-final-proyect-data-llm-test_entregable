@@ -1,0 +1,3 @@
+  pass: 5
+  warning: 0
+  discard: 3

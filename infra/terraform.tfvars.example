@@ -1,0 +1,49 @@
+# ============================================================
+# Plantilla de variables — copiar a terraform.tfvars y ajustar
+# (terraform.tfvars está en .gitignore — nunca commitear)
+# ============================================================
+
+project_name = "bsg-acmeco-rag"
+environment  = "dev"
+aws_region   = "us-east-1"
+
+# VPC
+vpc_cidr             = "10.42.0.0/16"
+private_subnet_cidrs = ["10.42.1.0/24", "10.42.2.0/24"]
+
+# Aurora Serverless v2 — Fase 1
+aurora_engine_version = "16.6"
+aurora_min_capacity   = 0.5  # ~$43/mes idle. Subir a 1.0 si latencia es problema.
+aurora_max_capacity   = 2.0  # ~$170/mes pico. Fase 2: 4.0–8.0
+aurora_database_name  = "ragvectors"
+aurora_master_username = "rag_admin"
+
+# Protección de borrado — DEJAR EN false EN DEV
+# Activar en true sólo cuando haya datos productivos
+enable_deletion_protection = false
+
+# VPC Interface Endpoints (~$8/mes c/u)
+enable_bedrock_endpoint         = true
+enable_secrets_manager_endpoint = true
+
+# Tags adicionales (los comunes ya están en main.tf)
+tags = {
+  CostCenter = "BSG-Final-Project"
+  Sprint     = "P12-Fase1"
+}
+
+# ============================================================
+# Compute toggles - flujo de deploy de 2 pasadas
+# ============================================================
+# PRIMER apply (foundation): ambos en false porque las imagenes
+# no estan en ECR aun. Despues de docker push, cambiar a true.
+deploy_lambda_chunking = true
+deploy_indexer_task    = true
+
+# ============================================================
+# Bastion EC2 TEMPORAL para init pgvector en Aurora privada
+# ============================================================
+# Modo standby (recomendado idle): false - destruye t4g.nano + IGW + public subnet
+# Modo activo (para DDL init o debug Aurora): true
+# Cambio rapido: editar y `terraform apply`. Re-crear toma ~1 min.
+deploy_bastion = false

@@ -1,0 +1,33 @@
+BEGIN_EXPLAIN
+Limit  (cost=12.74..12.75 rows=5 width=154) (actual time=1.903..1.905 rows=5 loops=1)
+  InitPlan 1 (returns $0)
+    ->  Limit  (cost=0.00..0.12 rows=1 width=32) (actual time=0.002..0.002 rows=1 loops=1)
+          ->  Seq Scan on documents_embeddings documents_embeddings_1  (cost=0.00..10.90 rows=90 width=32) (actual time=0.001..0.001 rows=1 loops=1)
+  ->  Sort  (cost=12.62..12.84 rows=90 width=154) (actual time=1.903..1.903 rows=5 loops=1)
+        Sort Key: ((documents_embeddings.embedding <=> $0))
+        Sort Method: quicksort  Memory: 25kB
+        ->  Seq Scan on documents_embeddings  (cost=0.00..11.12 rows=90 width=154) (actual time=0.686..0.729 rows=5 loops=1)
+Planning Time: 16.173 ms
+Execution Time: 1.973 ms
+END_EXPLAIN
+BEGIN_SAMPLE
+1c8f7db106ae69d4005baefc|contract|financial|169|657|run-demo-20260601-015935
+557411306ade398adf42b356|faq|financial|299|1024|run-demo-20260601-015935
+5a1378ed5e6bf697c8a352e3|contract|financial|175|605|run-demo-20260601-015935
+6973507c5c78256ec3d29f74|contract|financial|149|551|run-demo-20260601-015935
+cdd4eee77c67b7a3c57795e2|dossier_icp|financial|313|1053|run-demo-20260601-015935
+END_SAMPLE
+BEGIN_INDEXES
+documents_embeddings_chunk_id_key|CREATE UNIQUE INDEX documents_embeddings_chunk_id_key ON public.documents_embeddings USING btree (chunk_id)
+documents_embeddings_pkey|CREATE UNIQUE INDEX documents_embeddings_pkey ON public.documents_embeddings USING btree (id)
+idx_documents_embeddings_chunk_text_fts|CREATE INDEX idx_documents_embeddings_chunk_text_fts ON public.documents_embeddings USING gin (to_tsvector('spanish'::regconfig, chunk_text))
+idx_documents_embeddings_crit_version|CREATE INDEX idx_documents_embeddings_crit_version ON public.documents_embeddings USING btree (criticality, version_id) WHERE ((criticality)::text = 'financial'::text)
+idx_documents_embeddings_criticality|CREATE INDEX idx_documents_embeddings_criticality ON public.documents_embeddings USING btree (criticality)
+idx_documents_embeddings_doc_type|CREATE INDEX idx_documents_embeddings_doc_type ON public.documents_embeddings USING btree (doc_type)
+idx_documents_embeddings_document_id|CREATE INDEX idx_documents_embeddings_document_id ON public.documents_embeddings USING btree (document_id)
+idx_documents_embeddings_hnsw|CREATE INDEX idx_documents_embeddings_hnsw ON public.documents_embeddings USING hnsw (embedding vector_cosine_ops) WITH (m='16', ef_construction='64')
+idx_documents_embeddings_metadata_gin|CREATE INDEX idx_documents_embeddings_metadata_gin ON public.documents_embeddings USING gin (metadata_json jsonb_path_ops)
+idx_documents_embeddings_version_id|CREATE INDEX idx_documents_embeddings_version_id ON public.documents_embeddings USING btree (version_id)
+idx_documents_embeddings_vertical|CREATE INDEX idx_documents_embeddings_vertical ON public.documents_embeddings USING btree (vertical)
+END_INDEXES
+

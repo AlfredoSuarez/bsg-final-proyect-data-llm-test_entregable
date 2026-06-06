@@ -1,0 +1,156 @@
+=== SQL DDL apply test — 2026-05-31T05:36:16Z =====0b252ecc8bb35ce6bb5f4317f79cbf11f5330605098bcef6436d154021b6d1fb
+Esperando a que Postgres esté listo...
+  ✓ Postgres listo tras 3s
+
+==> Aplicando DDL: /mnt/c/Users/Rog/OneDrive/BCG Institute/Arquitectura Escalable/Proyecto_Final/indexer/sql/00_init_pgvector.sql
+CREATE EXTENSION
+CREATE EXTENSION
+CREATE TABLE
+COMMENT
+COMMENT
+COMMENT
+COMMENT
+CREATE INDEX
+COMMENT
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE FUNCTION
+DROP TRIGGER
+psql:/tmp/init.sql:131: NOTICE:  trigger "set_updated_at" for relation "documents_embeddings" does not exist, skipping
+CREATE TRIGGER
+SELECT 0
+CREATE INDEX
+COMMENT
+
+==> Verificación: tablas y extension
+                List of relations
+ Schema |         Name         | Type  |  Owner   
+--------+----------------------+-------+----------
+ public | documents_embeddings | table | postgres
+(1 row)
+
+                                         Table "public.documents_embeddings"
+     Column      |           Type           | Collation | Nullable |                     Default                      
+-----------------+--------------------------+-----------+----------+--------------------------------------------------
+ id              | bigint                   |           | not null | nextval('documents_embeddings_id_seq'::regclass)
+ chunk_id        | character varying(64)    |           | not null | 
+ document_id     | character varying(64)    |           | not null | 
+ page_number     | integer                  |           |          | 
+ chunk_index     | integer                  |           |          | 
+ chunk_text      | text                     |           | not null | 
+ metadata_json   | jsonb                    |           | not null | 
+ embedding       | vector(1024)             |           | not null | 
+ token_count     | integer                  |           |          | 
+ doc_type        | character varying(32)    |           | not null | 
+ vertical        | character varying(32)    |           | not null | 
+ criticality     | character varying(32)    |           | not null | 
+ source_filename | text                     |           |          | 
+ version_id      | character varying(64)    |           | not null | 
+ created_at      | timestamp with time zone |           | not null | now()
+ updated_at      | timestamp with time zone |           | not null | now()
+Indexes:
+    "documents_embeddings_pkey" PRIMARY KEY, btree (id)
+    "documents_embeddings_chunk_id_key" UNIQUE CONSTRAINT, btree (chunk_id)
+    "idx_documents_embeddings_chunk_text_fts" gin (to_tsvector('spanish'::regconfig, chunk_text))
+    "idx_documents_embeddings_crit_v                                         Table "public.documents_embeddings"
+     Column      |           Type           | Collation | Nullable |                     Default                      
+-----------------+--------------------------+-----------+----------+--------------------------------------------------
+ id              | bigint                   |           | not null | nextval('documents_embeddings_id_seq'::regclass)
+ chunk_id        | character varying(64)    |           | not null | 
+ document_id     | character varying(64)    |           | not null | 
+ page_number     | integer                  |           |          | 
+ chunk_index     | integer                  |           |          | 
+ chunk_text      | text                     |           | not null | 
+ metadata_json   | jsonb                    |           | not null | 
+ embedding       | vector(1024)             |           | not null | 
+ token_count     | integer                  |           |          | 
+ doc_type        | character varying(32)    |           | not null | 
+ vertical        | character varying(32)    |           | not null | 
+ criticality     | character varying(32)    |           | not null | 
+ source_filename | text                     |           |          | 
+ version_id      | character varying(64)    |           | n extname | extversion 
+---------+------------
+ vector  | 0.8.2
+(1 row)
+
+
+==> Verificación: índices
+                                  List of relations
+ Schema |               Name                | Type  |  Owner   |        Table         
+--------+-----------------------------------+-------+----------+----------------------
+ public | documents_embeddings_chunk_id_key | index | postgres | documents_embeddings
+ public | documents_embeddings_pkey         | index | postgres | documents_embeddings
+(2 rows)
+
+
+==> Verificación: vista materializada
+                    List of relations
+ Schema |       Name       |       Type        |  Owner   
+--------+------------------+-------------------+----------
+ public | mv_version_stats | materialized view | postgres
+(1 row)
+
+
+==> Insert + select sintético
+INSERT 0 1
+    chunk_id    | doc_type | criticality 
+----------------+----------+-------------
+ test-chunk-001 | contract | financial
+(1 row)
+
+
+==> Test de búsqueda vectorial
+    chunk_id    | similarity 
+----------------+------------
+ test-chunk-001 |          1
+(1 row)
+
+criticality::text = ANY (ARRAY['financial'::character varying, 'legal'::character varying, 'operational'::character varying, 'informational'::character varying]::text[]))
+    "documents_embeddings_doc_type_check" CHECK (doc_type::text = ANY (ARRAY['contract'::character varying, 'sla'::character varying, 'policy_credit'::character varying, 'dossier_icp'::character varying, 'manual_tech'::character varying, 'catalog'::character varying, 'case_study'::character varying, 'faq'::character varying, 'process_op'::character varying, 'unknown'::character varying]::text[]))
+Triggers:
+    set_updated_at BEFORE UPDATE ON documents_embeddings FOR EACH ROW EXECUTE FUNCTION trg_set_updated_at()
+
+ extname | extversion 
+---------+------------
+ vector  | 0.8.2
+(1 row)
+
+
+==> Verificación: índices
+                                  List of relations
+ Schema |               Name                | Type  |  Owner   |        Table         
+--------+-----------------------------------+-------+----------+----------------------
+ public | documents_embeddings_chunk_id_key | index | postgres | documents_embeddings
+ public | documents_embeddings_pkey         | index | postgres | documents_embeddings
+(2 rows)
+
+
+==> Verificación: vista materializada
+                    List of relations
+ Schema |       Name       |       Type        |  Owner   
+--------+------------------+-------------------+----------
+ public | mv_version_stats | materialized view | postgres
+(1 row)
+
+
+==> Insert + select sintético
+INSERT 0 1
+    chunk_id    | doc_type | criticality 
+----------------+----------+-------------
+ test-chunk-001 | contract | financial
+(1 row)
+
+
+==> Test de búsqueda vectorial
+    chunk_id    | similarity 
+----------------+------------
+ test-chunk-001 |          1
+(1 row)
+
+[0;32m  ✓ DDL aplicado correctamente[0m

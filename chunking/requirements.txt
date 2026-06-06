@@ -1,0 +1,14 @@
+# Dependencias de la Lambda de chunking + embeddings
+# Instaladas en el container image (ver Dockerfile)
+# boto3 viene en la imagen base de AWS Lambda, pero pinneamos la version
+# para asegurar reproducibilidad.
+
+# numpy debe pinearse ANTES que pyarrow: sin pin, pip resuelve a numpy 2.x
+# que requiere meson + compilador C (no presente en base Lambda AL2).
+# 1.26.4 tiene wheel manylinux_2_17_aarch64 compatible con AL2 glibc 2.26.
+numpy==1.26.4
+boto3==1.34.131
+botocore==1.34.131
+langchain-text-splitters==0.3.4
+tiktoken==0.7.0
+pyarrow==16.1.0

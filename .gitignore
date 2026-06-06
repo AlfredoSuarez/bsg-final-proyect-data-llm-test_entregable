@@ -1,0 +1,180 @@
+# ============================================================
+# SECRETOS Y CREDENCIALES — NUNCA committear
+# ============================================================
+# Archivos específicos del proyecto (defensa en profundidad)
+.env.tools_api
+aws.txt
+airy-rock-*.json
+gamma.txt
+
+# Patrones generales de credenciales
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+*-service-account.json
+secrets/
+.secrets/
+
+# AWS
+.aws/
+aws-credentials*
+*aws_keys*
+# IAM access keys CSVs (formato AWS console export)
+*accessKey*
+*accessKeys*
+*_credentials.csv
+bsg-deployer*
+
+# GCP
+gcp-key*.json
+*gcp-credentials*
+
+# ============================================================
+# Terraform
+# ============================================================
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ============================================================
+# AWS CDK (por si se elige CDK en vez de Terraform)
+# ============================================================
+cdk.out/
+cdk.context.json
+*.js
+!jest.config.js
+*.d.ts
+node_modules/
+
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# mypy / ruff
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+
+# ============================================================
+# IDE / Editores
+# ============================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ============================================================
+# Sistema Operativo
+# ============================================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# OneDrive / Office
+~$*
+*.tmp
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ============================================================
+# Logs y artefactos de pipeline
+# ============================================================
+*.log
+logs/
+*.parquet
+data/raw/
+data/clean/
+data/embeddings/
+local-data/
+
+# ============================================================
+# Tests locales — fixtures generados y outputs de evidencia
+# ============================================================
+# Los documentos sintéticos se regeneran on-demand (idempotente)
+tests/fixtures/samples/
+# Outputs de pytest, docker build, sql DDL test
+# Se permiten .txt y .md como entregable academico; binarios quedan fuera.
+evidence/*
+!evidence/.gitkeep
+!evidence/*.txt
+!evidence/*.md
+# Entregable consolidado final (PDF + HTML + script generador)
+!evidence/Proyecto12_Entregable_Final.pdf
+!evidence/Proyecto12_Entregable_Final.html
+!evidence/generate_full_pdf.py
+# Subdirectorio cloud/ con evidencia del deploy real a AWS (Ruta C)
+!evidence/cloud/
+!evidence/cloud/**
+# Pero excluir binarios pesados dentro de cloud/
+evidence/cloud/**/*.parquet
+evidence/cloud/**/*.tar
+# venv local
+.venv/
+
+# ============================================================
+# Docker
+# ============================================================
+*.tar
+docker-compose.override.yml

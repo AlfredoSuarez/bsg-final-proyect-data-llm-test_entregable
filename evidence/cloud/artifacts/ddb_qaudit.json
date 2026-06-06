@@ -1,0 +1,231 @@
+{
+    "Items": [
+        {
+            "reasons": {
+                "SS": [
+                    "financial_marker_detected"
+                ]
+            },
+            "criticality": {
+                "S": "financial"
+            },
+            "chunk_id": {
+                "S": "1c8f7db106ae69d4005baefc"
+            },
+            "verdict": {
+                "S": "pass"
+            },
+            "timestamp": {
+                "S": "2026-06-01T02:01:42.574251+00:00"
+            },
+            "metrics_json": {
+                "S": "{\"length_tokens\": 169, \"ttr\": 0.735, \"has_financial_marker\": true, \"matched_boilerplate\": false}"
+            },
+            "document_id": {
+                "S": "0457b6405be1d611e1d8a3a2"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-015935"
+            }
+        },
+        {
+            "reasons": {
+                "SS": [
+                    "financial_marker_detected"
+                ]
+            },
+            "criticality": {
+                "S": "financial"
+            },
+            "chunk_id": {
+                "S": "6973507c5c78256ec3d29f74"
+            },
+            "verdict": {
+                "S": "pass"
+            },
+            "timestamp": {
+                "S": "2026-06-01T02:01:42.591688+00:00"
+            },
+            "metrics_json": {
+                "S": "{\"length_tokens\": 149, \"ttr\": 0.767, \"has_financial_marker\": true, \"matched_boilerplate\": false}"
+            },
+            "document_id": {
+                "S": "0457b6405be1d611e1d8a3a2"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-015935"
+            }
+        },
+        {
+            "reasons": {
+                "SS": [
+                    "financial_marker_detected"
+                ]
+            },
+            "criticality": {
+                "S": "financial"
+            },
+            "chunk_id": {
+                "S": "cdd4eee77c67b7a3c57795e2"
+            },
+            "verdict": {
+                "S": "pass"
+            },
+            "timestamp": {
+                "S": "2026-06-01T02:01:42.496509+00:00"
+            },
+            "metrics_json": {
+                "S": "{\"length_tokens\": 313, \"ttr\": 0.765, \"has_financial_marker\": true, \"matched_boilerplate\": false}"
+            },
+            "document_id": {
+                "S": "1e4bbb98cf72f0e28cf4d6b6"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-015935"
+            }
+        },
+        {
+            "reasons": {
+                "SS": [
+                    "too_short"
+                ]
+            },
+            "criticality": {
+                "S": "operational"
+            },
+            "chunk_id": {
+                "S": "9c1672e4e4918854e223e155"
+            },
+            "verdict": {
+                "S": "discard"
+            },
+            "timestamp": {
+                "S": "2026-06-01T02:01:42.402883+00:00"
+            },
+            "metrics_json": {
+                "S": "{\"length_tokens\": 87, \"ttr\": 0.922, \"has_financial_marker\": false, \"matched_boilerplate\": false}"
+            },
+            "document_id": {
+                "S": "7839277dcac59fab37a1f036"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-015935"
+            }
+        },
+        {
+            "reasons": {
+                "SS": [
+                    "too_short"
+                ]
+            },
+            "criticality": {
+                "S": "operational"
+            },
+            "chunk_id": {
+                "S": "4bf81aef1d337ab382946fe5"
+            },
+            "verdict": {
+                "S": "discard"
+            },
+            "timestamp": {
+                "S": "2026-06-01T02:01:42.396416+00:00"
+            },
+            "metrics_json": {
+                "S": "{\"length_tokens\": 46, \"ttr\": 0.885, \"has_financial_marker\": false, \"matched_boilerplate\": false}"
+            },
+            "document_id": {
+                "S": "7839277dcac59fab37a1f036"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-015935"
+            }
+        },
+        {
+            "reasons": {
+                "SS": [
+                    "financial_marker_detected"
+                ]
+            },
+            "criticality": {
+                "S": "financial"
+            },
+            "chunk_id": {
+                "S": "557411306ade398adf42b356"
+            },
+            "verdict": {
+                "S": "pass"
+            },
+            "timestamp": {
+                "S": "2026-06-01T02:01:42.534235+00:00"
+            },
+            "metrics_json": {
+                "S": "{\"length_tokens\": 299, \"ttr\": 0.702, \"has_financial_marker\": true, \"matched_boilerplate\": false}"
+            },
+            "document_id": {
+                "S": "b12bfc9c64284e48466e08c7"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-015935"
+            }
+        },
+        {
+            "reasons": {
+                "SS": [
+                    "too_short"
+                ]
+            },
+            "criticality": {
+                "S": "operational"
+            },
+            "chunk_id": {
+                "S": "0d0a5da76ec8e55a5754fa2f"
+            },
+            "verdict": {
+                "S": "discard"
+            },
+            "timestamp": {
+                "S": "2026-06-01T02:01:42.408633+00:00"
+            },
+            "metrics_json": {
+                "S": "{\"length_tokens\": 75, \"ttr\": 0.875, \"has_financial_marker\": false, \"matched_boilerplate\": false}"
+            },
+            "document_id": {
+                "S": "7839277dcac59fab37a1f036"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-015935"
+            }
+        },
+        {
+            "reasons": {
+                "SS": [
+                    "financial_marker_detected"
+                ]
+            },
+            "criticality": {
+                "S": "financial"
+            },
+            "chunk_id": {
+                "S": "5a1378ed5e6bf697c8a352e3"
+            },
+            "verdict": {
+                "S": "pass"
+            },
+            "timestamp": {
+                "S": "2026-06-01T02:01:42.583569+00:00"
+            },
+            "metrics_json": {
+                "S": "{\"length_tokens\": 175, \"ttr\": 0.727, \"has_financial_marker\": true, \"matched_boilerplate\": false}"
+            },
+            "document_id": {
+                "S": "0457b6405be1d611e1d8a3a2"
+            },
+            "version_id": {
+                "S": "run-demo-20260601-015935"
+            }
+        }
+    ],
+    "Count": 8,
+    "ScannedCount": 24,
+    "ConsumedCapacity": null
+}
