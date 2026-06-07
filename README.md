@@ -14,10 +14,11 @@ El **[folder `Docs Finales/`](Docs%20Finales/)** contiene el material principal 
 - **[Proyecto12_Entregable_Final.pdf](Docs%20Finales/Proyecto12_Entregable_Final.pdf)** — Entregable consolidado de 146 páginas (el "qué se entregó")
 - **[README de Docs Finales](Docs%20Finales/README.md)** — Guía de lectura + links a presentaciones Gamma + disclosure de anonimización
 
-### Presentaciones Gamma
+### Material multimedia
 
-- 📊 [Más a detalle](https://gamma.app/docs/Proyecto-12-LLM-Data-Engineering-Pipeline-6wow0z7dqdyr7f9)
-- 📋 [Resumen ejecutivo](https://gamma.app/docs/Proyecto-12-LLM-Data-Engineering-Pipeline-auzjwr6wb2as59u)
+- 🎥 **[Video walkthrough (Loom)](https://www.loom.com/share/af5e82791ab546b9a6a2a3914e065047)** — Recomendado como primer contacto. Explica el contexto y cómo se construyó el proyecto
+- 📊 [Presentación detallada (Gamma)](https://gamma.app/docs/Proyecto-12-LLM-Data-Engineering-Pipeline-6wow0z7dqdyr7f9)
+- 📋 [Resumen ejecutivo (Gamma)](https://gamma.app/docs/Proyecto-12-LLM-Data-Engineering-Pipeline-auzjwr6wb2as59u)
 
 ### Sobre la anonimización
 

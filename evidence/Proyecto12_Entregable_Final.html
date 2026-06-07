@@ -270,6 +270,25 @@ table.wide th, table.wide td {
 <strong>Proyecto 12:</strong> ETL + Chunking + Embeddings + Indexing Pipeline para LLMs
 <strong>Caso de uso real:</strong> Plataforma de Conocimiento del <strong>Marketplace B2B PyME de Acme Co</strong>, primer motor de instrumentación de la tesis <strong>Economic Graph de la PyME Mexicana</strong> (Grupo Acme).</p>
 <hr />
+<h3>📚 Material de entrega — empezar aquí</h3>
+<p>El <strong><a href="Docs%20Finales/">folder <code>Docs Finales/</code></a></strong> contiene el material principal para revisión:</p>
+<ul>
+<li><strong><a href="Docs%20Finales/01_Proyecto12_Origen_BSG.md">01_Proyecto12_Origen_BSG.md</a></strong> — Spec original del Proyecto 12 (el "qué se pidió")</li>
+<li><strong><a href="Docs%20Finales/Proyecto12_Entregable_Final.pdf">Proyecto12_Entregable_Final.pdf</a></strong> — Entregable consolidado de 146 páginas (el "qué se entregó")</li>
+<li><strong><a href="Docs%20Finales/README.md">README de Docs Finales</a></strong> — Guía de lectura + links a presentaciones Gamma + disclosure de anonimización</li>
+</ul>
+<h4>Material multimedia</h4>
+<ul>
+<li>🎥 <strong><a href="https://www.loom.com/share/af5e82791ab546b9a6a2a3914e065047">Video walkthrough (Loom)</a></strong> — Recomendado como primer contacto. Explica el contexto y cómo se construyó el proyecto</li>
+<li>📊 <a href="https://gamma.app/docs/Proyecto-12-LLM-Data-Engineering-Pipeline-6wow0z7dqdyr7f9">Presentación detallada (Gamma)</a></li>
+<li>📋 <a href="https://gamma.app/docs/Proyecto-12-LLM-Data-Engineering-Pipeline-auzjwr6wb2as59u">Resumen ejecutivo (Gamma)</a></li>
+</ul>
+<h4>Sobre la anonimización</h4>
+<p>Por confidencialidad del cliente real, los nombres de marcas en este repo están anonimizados con un mapping consistente. Ver el bloque "Disclosure" en <a href="Docs%20Finales/README.md">Docs Finales/README.md</a> para las equivalencias.</p>
+<blockquote>
+<p>En resumen: <strong>Acme Co</strong> = cliente principal (telco), <strong>Grupo Acme</strong> = conglomerado al que pertenece, <strong>PyME Digital</strong> = ICP fictio de la PyME representativa. Términos como <strong>Carrier Billing</strong> se mantienen porque son nomenclatura estándar de industria.</p>
+</blockquote>
+<hr />
 <h3>Resumen ejecutivo</h3>
 <p>Pipeline cloud-nativo en <strong>AWS</strong> que ingesta 500+ documentos (PDF/DOCX/HTML) del Marketplace B2B PyME de Acme Co, los limpia, aplica <strong>chunking semántico con Quality Gate</strong> (incluida regla maestra para chunks financieros CNBV), genera <strong>embeddings con Bedrock Titan V2</strong> (1024 dim), los indexa en <strong>Aurora PostgreSQL + <code>pgvector</code></strong> con índice HNSW, registra cada versión inmutable en <strong>DynamoDB</strong> para auditoría LFPDPPP/CNBV, y expone una <strong>state machine de Step Functions</strong> que orquesta el flujo end-to-end con observabilidad completa en <strong>CloudWatch</strong> (dashboard + 7 alarmas).</p>
 <p>Cumple los 12 componentes de la rúbrica del Proyecto 12 (~92/100 pts directos cubiertos) y entrega la <strong>plomería de datos del Año 1</strong> de un activo estratégico de 7 años para Acme Co / Grupo Acme.</p>

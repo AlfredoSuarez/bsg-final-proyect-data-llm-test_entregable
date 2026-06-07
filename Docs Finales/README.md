@@ -9,16 +9,21 @@ Este folder contiene el **material final a revisar** del Proyecto 12 — LLM Dat
 | Archivo | Descripción | Para qué sirve |
 |---|---|---|
 | **[01_Proyecto12_Origen_BSG.md](01_Proyecto12_Origen_BSG.md)** | Especificación original del Proyecto 12 publicada por BSG Institute (Msc. Andrés Felipe Rojas Parra) | Documento de partida — define los 12 componentes obligatorios y la rúbrica académica |
+| **[Proyecto12_Entregable_Ejecutivo.pdf](Proyecto12_Entregable_Ejecutivo.pdf)** | Versión ejecutiva de **5 páginas** con los links (Loom, Gamma, repo) | Para enviar directamente como entregable standalone |
 | **[Proyecto12_Entregable_Final.pdf](Proyecto12_Entregable_Final.pdf)** | Entregable consolidado de 146 páginas con todos los documentos del proyecto | Respuesta técnica al spec del profesor; revisar este para evaluación detallada |
 | **[README_Proyecto.md](README_Proyecto.md)** | Copia del README general del repo | Contexto rápido del proyecto y guía de navegación del código |
 
 ---
 
-## Presentaciones (Gamma)
+## Material multimedia complementario
 
-Las dos presentaciones complementarias del proyecto, generadas con Gamma AI:
+### 🎥 Video walkthrough (Loom)
 
-### 📊 Más a detalle (versión completa)
+https://www.loom.com/share/af5e82791ab546b9a6a2a3914e065047
+
+**Recomendado como punto de partida.** Explica el contexto del proyecto y cómo se construyó end-to-end. Ideal para evaluadores que prefieren entender el "porqué" antes de leer la documentación técnica.
+
+### 📊 Presentación detallada (Gamma)
 
 https://gamma.app/docs/Proyecto-12-LLM-Data-Engineering-Pipeline-6wow0z7dqdyr7f9
 
@@ -28,7 +33,7 @@ Profundiza en:
 - Quality Gate con regla maestra financiera
 - Resultados del deploy real a AWS
 
-### 📋 Resumen ejecutivo
+### 📋 Resumen ejecutivo (Gamma)
 
 https://gamma.app/docs/Proyecto-12-LLM-Data-Engineering-Pipeline-auzjwr6wb2as59u
 
@@ -59,9 +64,9 @@ Términos NO anonimizados (son genéricos de industria, no marcas registradas):
 
 | Si tienes... | Lee en este orden |
 |---|---|
-| **5 minutos** | Resumen ejecutivo (Gamma) → `01_Proyecto12_Origen_BSG.md` |
-| **15 minutos** | Lo anterior + sección "Decisiones clave" del PDF (páginas 14-22) |
-| **1 hora** | PDF completo de 146 páginas |
+| **5 minutos** | Video Loom + `01_Proyecto12_Origen_BSG.md` |
+| **15 minutos** | Lo anterior + Resumen ejecutivo (Gamma) + sección "Decisiones clave" del PDF (páginas 14-22) |
+| **1 hora** | Lo anterior + Presentación detallada (Gamma) + PDF completo de 146 páginas |
 | **Quieres profundizar técnicamente** | PDF completo + repo (especialmente `infra/`, `etl/`, `chunking/`, `evidence/cloud/`) |
 
 ---
